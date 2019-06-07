@@ -8,7 +8,6 @@ WORKDIR /var/www/html
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
-    build-essential \
     zip \
     unzip \
     git \
