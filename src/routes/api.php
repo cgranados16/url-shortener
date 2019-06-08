@@ -13,4 +13,11 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::post('/url', 'URLController@store');
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
+Route::get('/url', 'API\URLController@index');
+Route::get('/{code}', 'API\URLController@show');
+Route::post('/url', 'API\URLController@store');
+
