@@ -3,7 +3,7 @@
 URL Shortener written in Laravel 5.8 using a LEMP stack (Nginx, PHP, and MariaDB) docker image.
 
 1. [Installation](#installation)
-2. [Challenges and Design Decisions](#challenges)
+2. [Challenges and Design Decisions](#challenges-and-design-decisions)
 3. [Future improvements](#future-improvements)
 4. [Third-Party Libraries](#third-party-libraries)
 ## Installation
@@ -73,20 +73,27 @@ Our codes are 6 characters long. Let's say we have the following characters to g
 > 62<sup>6</sup> = 56.800.235.584
 
 We have more than 56 billion unique short codes we can store in our database!
+We hash the long URL using base64 and take the first 6 characters of that string as our short code.
+### Same short code for two URLs
+Because we are taking the first 6 characters, it is possible that 2 different URLs use the same short code. I find this bug when trying to add Amazon and Google. Using [https://base62.io/](https://base62.io/)
 
+> https://www.google.com/ = GvB1DW...
+> https://www.amazon.com/ = GvB1DW...
+
+As you see, both URL starts with the same code so I got a duplicate error in the DB when trying to add Amazon. The solution was to start with the first 6 characters of the hash and see if there is any other url with that key and take the next 6 characters if the first code is already in use, until you get a new code.
 
 ### Top 100 URLs
 I had to change the urls table because I forgot to add something to rank the urls. Later I find out that if you add a `+` to any [Bitly](https://bitly.com/) url i.e. [https://bitly.com/1dNVPAW+](https://bitly.com/1dNVPAW+) it shows you information about the link you're being redirected and one of them is a **Click** counter. That gave me the idea to use a click counter as a method to rank every URL.
 #### Other Design Decisions
 
  - I used Laravel because is the PHP Framework I have more experience with.
-
-
+ - By definition, every URL has the scheme part. This is the *https://* part. If you try to add a url without that part you will get a Bad Request response.
 	
 ## Future improvements
  - [ ] Replace the RDBMS with a non-relational database for better scalability.
  - [ ] Secure the API with OAuth2 tokens i.e. [Laravel Passport](https://laravel.com/docs/5.8/passport)
  - [ ] Custom top instead of top 100 every time. Also the option to select between desc or asc order.
+ - [ ] Automatically complete the scheme in the URL if is not present (Web client)
 
 ### Third-Party Libraries
 |GitHub| Use in the app|
