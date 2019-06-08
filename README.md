@@ -20,11 +20,8 @@ URL Shortener written in Laravel 5.8 using a LEMP stack (Nginx, PHP, and MariaDB
 Clone the repo and cd into the folder:
 
 ```sh
-
 $ git clone https://github.com/cgranados16/url-shortener.git
-
 $ cd url-shortener
-
 ```
 
 ### Starting Docker
@@ -32,17 +29,13 @@ $ cd url-shortener
 Build the docker containers using docker-compose command:
 
 ```sh
-
 $ docker-compose build
-
 ```
 
 Then start the containers with:
 
 ```
-
 $ docker-compose up -d
-
 ```
 
 Once the container are all up you have to install Laravel dependencies.
@@ -52,17 +45,13 @@ Once the container are all up you have to install Laravel dependencies.
 Install Laravel dependencies using composer:
 
 ```sh
-
 $ docker-compose exec php composer install
-
 ```
 
 After that you just need to generate a key that will be stored in your .env file:
 
 ```sh
-
 $ docker-compose exec php php artisan key:generate
-
 ```
 
 ### Running the app
@@ -70,9 +59,7 @@ $ docker-compose exec php php artisan key:generate
 Make sure all the containers are up:
 
 ```
-
 $ docker-compose up -d
-
 ```
 
 Navigate to http://localhost:8080
@@ -82,17 +69,13 @@ Navigate to http://localhost:8080
 This will stop the docker containers:
 
 ```
-
 $ docker-compose kill
-
 ```
 
 This will remove all stopped service containers:
 
 ```
-
 $ docker-compose rm
-
 ```
 
 ## Testing
