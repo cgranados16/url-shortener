@@ -62,7 +62,7 @@ $ docker-compose exec php php artisan db:seed
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/afcd3916b2b098e73862)
 ## Challenges and Design Decisions
 ### How to generate short code
-The heavy part of this project was for me to choose a good algorithm to generate the short codes. I based my decision on [this blog](https://medium.com/@adhasmana/system-design-create-a-url-shortening-service-part-2-design-the-write-api-6197c1e0aa1c) by [Abhinav Dhasmana](https://medium.com/@adhasmana).
+The heavy part of this project was to choose a good algorithm to generate the short codes. I based my decision on [this blog](https://medium.com/@adhasmana/system-design-create-a-url-shortening-service-part-2-design-the-write-api-6197c1e0aa1c) by [Abhinav Dhasmana](https://medium.com/@adhasmana).
 Our codes are 6 characters long. Let's say we have the following characters to generate our short codes:
 -   A-Z(26)
 -   a-z(26)
