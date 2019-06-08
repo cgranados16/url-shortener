@@ -15,4 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/{code}', 'URLController@show')->name('show');
+Route::get('/{code}', 'URLController@show');
+
+Route::get('/redirectTo/{id}', 'URLController@redirectTo')->name('redirectTo');

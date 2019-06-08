@@ -13,7 +13,7 @@ class URL extends Model
      * @var array
      */
     protected $fillable = [
-        'url', 'code' 
+        'originalURL', 'code' 
     ];
 
     protected $hidden = [

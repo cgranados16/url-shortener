@@ -44,20 +44,22 @@ class URLController extends Controller
     {
         $base62 = new Base62();
         $hash = $base62->encode($longURL);
-        $shortURL = $this->getAvailable($hash, 0);
+        $shortURL = $this->getFirstAvailableCode($hash, 0);
         
         return $shortURL;
     }
 
     /**
+     * Recursive function that looks for the first
+     * code available in the hash.
      *  If the first 6 characters aren't available 
      *  look for the next 6 in the hash and so on.
      */
-    public function getAvailable($hash, $start){
+    public function getFirstAvailableCode($hash, $start){
         $shortURL = substr($hash, $start, 6);
         $url = URL::where('code', $shortURL)->first();
         if($url){
-            return $this->recursive($hash, $start+6);
+            return $this->getFirstAvailableCode($hash, $start+6);
         }
         return $shortURL;
     }
@@ -73,12 +75,21 @@ class URLController extends Controller
         }
 
         $url = URL::firstOrCreate(
-            ['url' => $request->url],
-            ['url' => $request->url,
+            ['originalURL' => $request->url],
+            ['originalURL' => $request->url,
              'code' => $this->getCode($request->url)
             ]
         );
         
-        return new URLResource($url);;
+        return new URLResource($url);
+    }
+
+    /**
+     * Returns top 100 URLs
+     */
+    public function top()
+    {
+        $top = URL::orderBy('clicks', 'DESC')->get()->take(100);
+        return $top;
     }
 }

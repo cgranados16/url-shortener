@@ -33,15 +33,16 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
-        for ($i=0; $i < 10; $i++) { 
+        for ($i=0; $i < 1000; $i++) { 
             
             $url = $faker->url;
             $date = $faker->dateTimeBetween('-5 years','now');
             DB::table('urls')->insert([
-                'url' => $url,
+                'originalURL' => $url,
                 'created_at' => $date,
                 'updated_at' => $date,
                 'code' => $this->getCode($url),
+                'clicks' => $faker->numberBetween(35, 15000),
             ]);
         }
         

@@ -11,6 +11,13 @@ class URLController extends Controller
         if(!$url){
             abort(404);
         }
-        return redirect($url->url,301);
+        $url->increment('clicks');
+        return redirect()->route('redirectTo',['id' => $url->id]);
+        
+    }
+
+    public function redirectTo($id){
+        $url = URL::find($id);
+        return redirect($url->originalURL,301);
     }
 }
