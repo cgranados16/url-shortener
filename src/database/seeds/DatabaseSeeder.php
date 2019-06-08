@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
-        for ($i=0; $i < 1000; $i++) { 
+        for ($i=0; $i < 150; $i++) { 
             
             $url = $faker->url;
             $date = $faker->dateTimeBetween('-5 years','now');

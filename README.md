@@ -48,12 +48,16 @@ Install Laravel dependencies using composer:
 $ docker-compose exec php composer install
 ```
 
-After that you just need to generate a key that will be stored in your .env file:
+After that you need to generate a key that will be stored in your .env file:
 
 ```sh
 $ docker-compose exec php php artisan key:generate
 ```
 
+To run all the migrations, execute the  `migrate`  Artisan command. This will create database schema in our MariaDB container.
+```
+docker-compose exec php php artisan migrate
+```
 ### Running the app
 
 Make sure all the containers are up:
@@ -80,11 +84,12 @@ $ docker-compose rm
 
 ## Testing
 
-You can add mock data to easily test the API. This will insert 1000 random URLs:
+You can add mock data to easily test the API. This will insert 150 random URLs:
 
 ```
 $ docker-compose exec php php artisan db:seed
 ```
+If you want more data just re-run the command above.
 
 ### Postman Collection
 
@@ -110,7 +115,7 @@ All API endpoints start with `/api/`.
 
 ### How to generate short code
 
-The heavy part of this project was to choose a good algorithm to generate the short codes. I based my decision on [this blog](https://medium.com/@adhasmana/system-design-create-a-url-shortening-service-part-2-design-the-write-api-6197c1e0aa1c) by [Abhinav Dhasmana](https://medium.com/@adhasmana).
+The heavy part of this project was to choose a good algorithm to generate the short codes. The algorithm was inspired in [this blog](https://medium.com/@adhasmana/system-design-create-a-url-shortening-service-part-2-design-the-write-api-6197c1e0aa1c) by [Abhinav Dhasmana](https://medium.com/@adhasmana).
 
 Our codes are 6 characters long. Let's say we have the following characters to generate our short codes:
 
@@ -130,7 +135,7 @@ We hash the long URL using base64 and take the first 6 characters of that string
 
 ### Same short code for two URLs
 
-Because we are taking the first 6 characters, it is possible that 2 different URLs use the same short code. I find this bug when trying to add Amazon and Google. Using [https://base62.io/](https://base62.io/)
+Because we are taking the first 6 characters, it is possible that 2 different URLs use the same short code. I found this bug when trying to add Amazon and Google. Using [https://base62.io/](https://base62.io/)
 
 > https://www.google.com/ = GvB1DW...
 
