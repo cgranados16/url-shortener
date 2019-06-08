@@ -6,7 +6,6 @@ use App\Models\URL;
 use Validator;
 use App\Http\Resources\URL as URLResource;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Tuupola\Base62;
 use App\Http\Controllers\Controller;
 
