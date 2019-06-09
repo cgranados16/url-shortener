@@ -14,7 +14,6 @@
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/top', 'HomeController@top')->name('top');
 
-
 Route::get('/{code}', 'URLController@show');
 
 Route::get('/redirectTo/{id}', 'URLController@redirectTo')->name('redirectTo');

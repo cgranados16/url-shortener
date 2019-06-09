@@ -15,6 +15,6 @@ class HomeController extends Controller
     }
 
     public function nsfw(){
-        return view('nsfw');
+        return view('nsfw',['url' => 'http://localhost:8080/cTVHSv']);
     }
 }

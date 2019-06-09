@@ -2,12 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>URL Shortener</title>
+  <title>NSFW Warning!</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
 
-  <head>
+    <!-- Favicons -->
+    <link href="img/favicon.png" rel="icon">
+    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+  
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,600,700,700i|Montserrat:300,400,500,600,700" rel="stylesheet">
+  
+    <!-- Bootstrap CSS File -->
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  
+    <!-- Libraries CSS Files -->
+    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+  
+    <!-- Main Stylesheet File -->
+    <link href="css/style.css" rel="stylesheet">
     
   <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,600,700,700i|Montserrat:300,400,500,600,700" rel="stylesheet">
@@ -15,14 +33,8 @@
 
       <!-- Main Stylesheet File -->
     <link href="css/style.css" rel="stylesheet">
-  </head>
   
-  <!-- =======================================================
-    Theme Name: Rapid
-    Theme URL: https://bootstrapmade.com/rapid-multipurpose-bootstrap-business-template/
-    Author: BootstrapMade.com
-    License: https://bootstrapmade.com/license/
-  ======================================================= -->
+
 </head>
 <body>
   <!--Call your modal-->
@@ -34,21 +46,38 @@
   <div id="animatedModal">
            
           
-      <div class="modal-content">
-          <div class="container">
-
-              <header class="section-header">
-                <h3>NSFW</h3>
-                <p id="timer"></p>
-              </header>
-      
-            </div>
+      <div class="modal-content ">
+          <section id="call-to-action" class="wow fadeInUp ">
+              <div class="container ">
+                <div class="row ">
+                  <div class="col-lg-9 text-center text-lg-left">
+                    <h3 class="cta-title">Not Safe For Work</h3>
+                    <p class="cta-text">
+                      The content in this URL may be innapropiate to view in some situations.
+                    </p>
+                    <a class="cta-btn" href="{{$url}}">Enter the site</a>
+                  </div>
+                  <div class="col-lg-3 cta-btn-container text-center">
+                
+                        
+                        <p class="cta-text" id="timer">10 seconds until redirecting</p>                    
+                  </div>
+                </div>
+        
+              </div>
+            </section>
       </div>
   </div>
 
   <script src="{{ asset('lib/jquery/jquery.min.js') }}"></script>
   <script src="{{ asset('lib/jquery/jquery-migrate.min.js') }}"></script>
   <script src="{{ asset('lib/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('lib/easing/easing.min.js') }}"></script>
+  <script src="{{ asset('lib/mobile-nav/mobile-nav.js') }}"></script>
+  <script src="{{ asset('lib/wow/wow.min.js') }}"></script>
+  <script src="{{ asset('lib/waypoints/waypoints.min.js') }}"></script>
+  <script src="{{ asset('lib/isotope/isotope.pkgd.min.js') }}"></script>
+  <script src="{{ asset('lib/lightbox/js/lightbox.min.js') }}"></script>
   <script src="{{ asset('lib/animatedModal/animatedModal.min.js') }}"></script>
   <script>
     $("#demo01").animatedModal({
@@ -62,7 +91,7 @@
 <script>
    var timeleft = 10;
   var downloadTimer = setInterval(function(){
-    document.getElementById("timer").innerHTML = timeleft + " seconds remaining";
+    document.getElementById("timer").innerHTML = timeleft + " seconds until redirecting";
     timeleft -= 1;
     if(timeleft <= 0){
       clearInterval(downloadTimer);
