@@ -83,8 +83,11 @@
               @foreach ($top as $url)
               <div class="col-md-12 col-lg-12 wow bounceInUp" data-wow-duration="1.4s">
                   <div class="box row">
-                    <div class=col-md-8>
-                      <p class="description"><b>{{$loop->iteration}}</b>
+                    <div class="col-md-1 text-center">
+                        <h1>{{$loop->iteration}}</h1>
+                    </div>
+                    <div class="col-md-7">
+                      <p class="description">
                         {{$url->originalURL}} 
                         @if ($url->NSFW)
                           <span class="badge badge-danger">NSFW</span>    
