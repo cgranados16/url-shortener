@@ -16,7 +16,6 @@ class URLController extends Controller
             return view('nsfw',['url' => $url->originalURL]);
         }
         return redirect()->route('redirectTo',['id' => $url->id]);
-        
     }
 
     public function redirectTo($id){

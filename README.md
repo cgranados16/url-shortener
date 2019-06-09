@@ -108,7 +108,7 @@ All API endpoints start with `/api/`.
 |GET|/api/url||Return all short URLs in the system. (Testing)|
 |GET|/api/{code}| A short code|Returns the URL that the app is redirecting you to. |
 |GET|/api/top| |Return top 100 URLs |
-|POST|/api/url|url: Full URL|Returns a JSON with a short code or errors|
+|POST|/api/url|url: Full URL, nsfw: boolean|Returns a JSON with a short code or errors|
 |GET|/{code}|A short code|Redirect you to a URL|
 
 ## Challenges and Design Decisions
@@ -152,6 +152,8 @@ I had to change the urls table because I forgot to add something to rank the url
 - I used Laravel because is the PHP Framework I have more experience with.
 
 - By definition, every URL has the scheme part. This is the *https://* part. If you try to add a url without that part you will get a Bad Request response.
+
+- The front-end uses the [Rapid – Multipurpose Bootstrap Business Template](https://bootstrapmade.com/rapid-multipurpose-bootstrap-business-template/)
 
 ## Future improvements
 
