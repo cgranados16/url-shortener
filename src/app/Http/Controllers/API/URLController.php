@@ -69,6 +69,7 @@ class URLController extends Controller
      */
     public function store(Request $request)
     {
+
         $validator = Validator::make($request->all(), $this->rules);
         if ($validator->fails()) {
             return response($validator->errors(),400);
@@ -77,10 +78,13 @@ class URLController extends Controller
         $url = URL::firstOrCreate(
             ['originalURL' => $request->url],
             ['originalURL' => $request->url,
-             'code' => $this->getCode($request->url)
+             'code' => $this->getCode($request->url),
+             'NSFW' => $request->has('nsfw'),
             ]
         );
-        
+        if ($request->partial){
+            return view('partials.recent', compact('url'));
+        }
         return new URLResource($url);
     }
 

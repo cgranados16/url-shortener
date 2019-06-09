@@ -43,6 +43,7 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => $date,
                 'code' => $this->getCode($url),
                 'clicks' => $faker->numberBetween(35, 15000),
+                'NSFW' => $faker->boolean,
             ]);
         }
         

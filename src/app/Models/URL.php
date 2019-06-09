@@ -13,7 +13,7 @@ class URL extends Model
      * @var array
      */
     protected $fillable = [
-        'originalURL', 'code' 
+        'originalURL', 'code', 'NSFW'
     ];
 
     protected $hidden = [
@@ -22,6 +22,7 @@ class URL extends Model
 
     protected $casts = [
         'created_at' => 'datetime:M d, Y, h:i A',
+        'NSFW' => 'boolean',
     ];
 
     public function getShortURLAttribute(){
