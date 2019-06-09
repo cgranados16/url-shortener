@@ -103,6 +103,11 @@
                   <input id="urlInput" type="text" class="form-control" placeholder="https://www.google.com/" style="display:flex;flex-grow:1;">                  
                   <a class="cta-btn align-middle" href="#call-to-action" onClick="shorten()">Shorten</a>
                 </div>
+                <div class="form-group mx-sm-3 mb-2">
+
+                  <input type="checkbox" id="nsfw" name="nsfw">
+                  <label class="cta-text"for="nsfw">Mark as NSFW</label>
+                </div>
             </div>
           </div>
           
@@ -168,7 +173,13 @@
   <script src="{{ asset('js/main.js') }}"></script>
   <script>
     function shorten(){
-      
+      var data = {                        
+        url: $('#urlInput').val(),
+        partial: true,
+      };
+      if($('#nsfw:checked').val()) {
+        data.nsfw = 1;
+      }
       $.ajaxSetup({
         headers: {
           'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
@@ -177,18 +188,13 @@
       jQuery.ajax({
         url: "{{ url('/api/url') }}",
         method: 'post',
-        data: {
-          url: $('#urlInput').val(),
-          partial: true,
-        },
+        data: data,
         success: function(result){
-          console.log(result);
           $('.history').append(result);
         },
         error: function (request, status, error) {
           var response = JSON.parse(request.responseText);
           alert(response.url);
-          console.log(response.url);
         }
     });      
     }

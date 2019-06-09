@@ -84,7 +84,12 @@
               <div class="col-md-12 col-lg-12 wow bounceInUp" data-wow-duration="1.4s">
                   <div class="box row">
                     <div class=col-md-8>
-                      <p class="description"><b>{{$loop->iteration}}</b> {{$url->originalURL}}</p>
+                      <p class="description"><b>{{$loop->iteration}}</b>
+                        {{$url->originalURL}} 
+                        @if ($url->NSFW)
+                          <span class="badge badge-danger">NSFW</span>    
+                        @endif
+                      </p>
                       <p class="description">Clicks: {{number_format($url->clicks,0)}}</p>
                     </div>
                     <div class=col-md-4>

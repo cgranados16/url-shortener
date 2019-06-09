@@ -163,6 +163,8 @@ I had to change the urls table because I forgot to add something to rank the url
 
 - [ ] Automatically complete the scheme in the URL if is not present (Web client)
 
+- [ ] Replace error alert with actual error message on the site.
+
 ### Third-Party Libraries
 
 | GitHub | Use in the app |
