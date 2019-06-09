@@ -59,8 +59,8 @@
 
       <nav class="main-nav float-right d-none d-lg-block">
         <ul>
-          <li class="active"><a href="{{route('home')}}">Home</a></li>
-          <li><a href="{{route('top')}}">Top</a></li>
+          <li ><a href="{{route('home')}}">Home</a></li>
+          <li class="active"><a href="{{route('top')}}">Top</a></li>
         </ul>
       </nav><!-- .main-nav -->
       
@@ -70,60 +70,44 @@
   <!--==========================
     Intro Section
   ============================-->
-  <section id="intro" class="clearfix">
-    <div class="container d-flex h-100">
-      <div class="row justify-content-center align-self-center">
-        <div class="col-md-6 intro-info order-md-first order-last">
-          <h2>Shorten your <br><span>link!</span></h2>
-          <div>
-            <a href="#call-to-action" class="btn-get-started scrollto">Get Short URL</a>
-          </div>
-        </div>
-  
-        <div class="col-md-6 intro-img order-md-last order-first">
-          <img src="img/intro-img.svg" alt="" class="img-fluid">
-        </div>
-      </div>
-
-    </div>
-  </section><!-- #intro -->
+ 
 
   <main id="main">
+      <section id="services" class="section-bg">
+          <div class="container">
+            <header class="section-header">
+              <h3>Top 100 URLs</h3>
+            </header>
+            <div class="row history">
+
+              @foreach ($top as $url)
+              <div class="col-md-12 col-lg-12 wow bounceInUp" data-wow-duration="1.4s">
+                  <div class="box row">
+                    <div class=col-md-8>
+                      <p class="description"><b>{{$loop->iteration}}</b> {{$url->originalURL}}</p>
+                      <p class="description">Clicks: {{number_format($url->clicks,0)}}</p>
+                    </div>
+                    <div class=col-md-4>
+                      <p class="description" style="text-align:right"><a href="{{$url->shortURL}}" target="_blank">{{$url->shortURL}}</a></p>
+                    </div>
+                  </div>
+                </div>
+           
+              @endforeach
+              
+            </div>
+          </div>
+        </section><!-- #services -->
 
     <!--==========================
       Services Section
     ============================-->
-    <section id="call-to-action" class="wow fadeInUp">
-        <div class="container">
-          <div class="form-inline">
-            <div class="col-lg-12 text-center text-lg-left">
-              <h3 class="cta-title">Enter a URL</h3>
-              
-              <div class="form-group mx-sm-3 mb-2">
-                  <input id="urlInput" type="text" class="form-control" placeholder="https://www.google.com/" style="display:flex;flex-grow:1;">                  
-                  <a class="cta-btn align-middle" href="#call-to-action" onClick="shorten()">Shorten</a>
-                </div>
-            </div>
-          </div>
-          
-
-        </div>
-       
-      </section><!-- #call-to-action -->
+    
 
        <!--==========================
       History Section
     ============================-->
-    <section id="services" class="section-bg">
-        <div class="container">
-          <header class="section-header">
-            <h3>History</h3>
-          </header>
-          <div class="row history">
-            @each('partials.recent', $history, 'url')
-          </div>
-        </div>
-      </section><!-- #services -->
+
 
     </main>
   </main>
@@ -166,32 +150,6 @@
   
   <!-- Template Main Javascript File -->
   <script src="{{ asset('js/main.js') }}"></script>
-  <script>
-    function shorten(){
-      
-      $.ajaxSetup({
-        headers: {
-          'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-        }
-      });
-      jQuery.ajax({
-        url: "{{ url('/api/url') }}",
-        method: 'post',
-        data: {
-          url: $('#urlInput').val(),
-          partial: true,
-        },
-        success: function(result){
-          console.log(result);
-          $('.history').append(result);
-        },
-        error: function (request, status, error) {
-          var response = JSON.parse(request.responseText);
-          alert(response.url);
-          console.log(response.url);
-        }
-    });      
-    }
-  </script>
+
 </body>
 </html>

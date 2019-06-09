@@ -80,7 +80,9 @@ class URLController extends Controller
              'code' => $this->getCode($request->url)
             ]
         );
-        
+        if ($request->partial){
+            return view('partials.recent', compact('url'));
+        }
         return new URLResource($url);
     }
 
