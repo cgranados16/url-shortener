@@ -13,4 +13,8 @@ class HomeController extends Controller
         $top = URL::orderBy('clicks', 'DESC')->get()->take(100);
         return view('top', ['top' => $top]); 
     }
+
+    public function nsfw(){
+        return view('nsfw');
+    }
 }

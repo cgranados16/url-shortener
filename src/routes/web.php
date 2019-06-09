@@ -13,6 +13,7 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/top', 'HomeController@top')->name('top');
+Route::get('/nsfw', 'HomeController@nsfw');
 
 Route::get('/{code}', 'URLController@show');
 
