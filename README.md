@@ -56,7 +56,7 @@ $ docker-compose exec php php artisan key:generate
 
 To run all the migrations, execute the  `migrate`  Artisan command. This will create database schema in our MariaDB container.
 ```
-docker-compose exec php php artisan migrate
+$ docker-compose exec php php artisan migrate
 ```
 ### Running the app
 
