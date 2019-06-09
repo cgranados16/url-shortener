@@ -108,7 +108,7 @@ All API endpoints start with `/api/`.
 |GET|/api/url||Return all short URLs in the system. (Testing)|
 |GET|/api/{code}| A short code|Returns the URL that the app is redirecting you to. |
 |GET|/api/top| |Return top 100 URLs |
-|POST|/api/url|url: Full URL, nsfw: boolean|Returns a JSON with a short code or errors|
+|POST|/api/url|url: Full URL, nsfw (optional)|Returns a JSON with a short code or errors|
 |GET|/{code}|A short code|Redirect you to a URL|
 
 ## Challenges and Design Decisions

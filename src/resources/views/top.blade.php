@@ -60,7 +60,7 @@
       <nav class="main-nav float-right d-none d-lg-block">
         <ul>
           <li ><a href="{{route('home')}}">Home</a></li>
-          <li class="active"><a href="{{route('top')}}">Top</a></li>
+          <li class="active"><a href="{{route('top')}}">Top 100</a></li>
         </ul>
       </nav><!-- .main-nav -->
       

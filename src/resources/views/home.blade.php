@@ -21,7 +21,6 @@
   <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="lib/animate/animate.min.css" rel="stylesheet">
   <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
@@ -60,7 +59,7 @@
       <nav class="main-nav float-right d-none d-lg-block">
         <ul>
           <li class="active"><a href="{{route('home')}}">Home</a></li>
-          <li><a href="{{route('top')}}">Top</a></li>
+          <li><a href="{{route('top')}}">Top 100</a></li>
         </ul>
       </nav><!-- .main-nav -->
       
@@ -100,8 +99,8 @@
               <h3 class="cta-title">Enter a URL</h3>
               
               <div class="form-group mx-sm-3 mb-2">
-                  <input id="urlInput" type="text" class="form-control" placeholder="https://www.google.com/" style="display:flex;flex-grow:1;">                  
-                  <a class="cta-btn align-middle" href="#call-to-action" onClick="shorten()">Shorten</a>
+                  <input id="urlInput" type="text" class="form-control" placeholder="https://www.google.com/" style="display:flex;flex-grow:1;" >                  
+                  <a class="cta-btn align-middle scrollto" href="#services" onClick="shorten()">Shorten</a>
                 </div>
                 <div class="form-group mx-sm-3 mb-2">
 
@@ -191,6 +190,7 @@
         data: data,
         success: function(result){
           $('.history').append(result);
+          $('#urlInput').val('');
         },
         error: function (request, status, error) {
           var response = JSON.parse(request.responseText);

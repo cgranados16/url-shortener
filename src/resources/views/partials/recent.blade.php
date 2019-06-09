@@ -1,6 +1,6 @@
 
 
-<div class="col-md-12 col-lg-12 wow bounceInUp" data-wow-duration="1.4s">
+<div class="col-md-12 col-lg-12 wow pulse" data-wow-duration="1.4s">
   <div class="box row">
     <div class=col-md-6>
       <p class="description">{{$url->originalURL}}</p>
