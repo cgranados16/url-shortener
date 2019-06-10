@@ -131,7 +131,7 @@ Our codes are 6 characters long. Let's say we have the following characters to g
 
 We have more than 56 billion unique short codes we can store in our database!
 
-We hash the long URL using base64 and take the first 6 characters of that string as our short code.
+We hash the long URL using base62 and take the first 6 characters of that string as our short code.
 
 ### Same short code for two URLs
 
